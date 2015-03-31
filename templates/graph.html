@@ -1,0 +1,31 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <title>User Graph</title>
+  <meta name="description" content="User Stats">
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+
+<body>
+  <script type="text/javascript">
+    var data = '{{ result|safe }}';
+    var jsonCircles = JSON.parse(data);
+
+
+    var svgContainer = d3.select("body").append("svg")
+                                     .attr("width", 200)
+                                     .attr("height", 200);
+
+    var circles = svgContainer.selectAll("circle")
+                          .data(jsonCircles)
+                          .enter()
+                          .append("circle");
+
+    var circleAttributes = circles
+                       .attr("cx", function (d) { return d.x_axis; })
+                       .attr("cy", function (d) { return d.y_axis; })
+                       .attr("r", function (d) { return d.radius; })
+                       .style("fill", function(d) { return d.color; });
+  </script>
+</body>
+</html>

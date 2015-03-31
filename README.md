@@ -18,4 +18,4 @@ This folder is autmatically synced from host to guest and back.
 
 ## Start Development Server - Vagrant
 
-Run `python3 /vagrant/faforever/manage.py runserver 0.0.0.0:8000`
+Run `python3 /vagrant/manage.py runserver 0.0.0.0:8000`
