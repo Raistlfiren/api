@@ -1,9 +1,9 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
 import ujson
 
 mod = Blueprint('stats', __name__)
 
 @mod.route('/stats')
 def user_rating_graph():
-    data = {'probability': 80, 'rating': 1200}
-    return ujson.dumps(data)
+    rating = ujson.dumps({'mean': 0, 'sigma': 1})
+    return render_template('stats/graph.html', rating=rating)
