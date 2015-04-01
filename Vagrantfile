@@ -17,11 +17,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder ".", "/vagrant"
 
   # -- Networking ------------------------------------------
-
   config.vm.hostname = hostname
 
-  # MySql
-  # config.vm.network :forwarded_port, guest: 3306, host: 3306
+  # Web Development Server
+  config.vm.network :forwarded_port, guest: 5000, host: 5000
 
   # -- Provisioning ----------------------------------------
   provision_dir = "vagrant/provision"
