@@ -20,3 +20,7 @@ CSRF_SESSION_KEY = "secret"
 
 # Secret key for signing cookies
 SECRET_KEY = "secret"
+
+UPLOAD_FOLDER = 'uploads'
+ALLOWED_EXTENSIONS = set(['zip'])
+MAX_CONTENT_LENGTH = 32 * 1024 * 1024

@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from . import stats
+from . import maps
 
 # Define the WSGI application object
 app = Flask(__name__)
@@ -14,5 +15,4 @@ def not_found(error):
 
 # Register blueprint(s)
 app.register_blueprint(stats.mod)
-# app.register_blueprint(xyz_module)
-# ..
+app.register_blueprint(maps.mod)
