@@ -1,3 +1,5 @@
 ujson
 Flask
 Jinja2
+peewee
+PyMySQL
