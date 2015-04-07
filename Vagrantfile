@@ -21,6 +21,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Web Development Server
   config.vm.network :forwarded_port, guest: 5000, host: 5000
+  # My Sql DB
+  config.vm.network :forwarded_port, guest: 3306, host: 5001
 
   # -- Provisioning ----------------------------------------
   provision_dir = "vagrant/provision"
@@ -28,5 +30,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   vm = config.vm
   vm.provision :shell, path: "#{provision_dir}/vagrant_provision"
   vm.provision :shell, path: "#{provision_dir}/python_provision"
-end
 
+  config.vm.provision :docker do |d|
+    d.pull_images "mysql"
+    d.run "mysql",
+      args: ' -e MYSQL_ROOT_PASSWORD="test1234" -e MYSQL_DATABASE="faf_lobby" --restart="always" --name faf -p 3306:3306'
+  end
+end
