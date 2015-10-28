@@ -1,4 +1,4 @@
-FROM python:3.4.3
+FROM python:3.5
 
 RUN pip install --upgrade pip
 RUN apt-get update
@@ -21,4 +21,4 @@ RUN pip install -e .
 
 RUN cat config.py
 
-CMD python run_local.py
+CMD python run_production.py
